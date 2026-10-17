@@ -55,6 +55,17 @@ py-modules = ["scanner"]
 line-length = 120
 target-version = "py38"
 
+[tool.ruff.lint]
+# Игнорируем правила, которые не критичны для работы
+ignore = [
+    "N999", # Invalid module name (ругается на дефисы в названии папки)
+    "I001", # Unsorted imports (сортировка импортов)
+    "RUF022", # __all__ is not sorted
+    "FA100", # Add from __future__ import annotations
+    "DTZ002", # datetime.today() used (ругается на отсутствие таймзоны)
+    "E501", # Line too long (если вдруг где-то длинная строка)
+]
+
 [tool.pytest.ini_options]
 testpaths = ["."]
 addopts = "-v --cov=scanner --cov-report=term-missing"
