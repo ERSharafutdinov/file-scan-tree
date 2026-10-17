@@ -1,0 +1,60 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "file-scan-tree"
+version = "1.0.0"
+description = "Многопоточный анализатор файловой системы с построением дерева каталогов и поиском дубликатов"
+readme = "README.md"
+requires-python = ">=3.8"
+license = { text = "MIT" }
+authors = [
+    { name = "Sharafutdinov Eduard Rinatovich", email = "sharafutdin-off@yandex.ru" }
+]
+keywords = ["filesystem", "scanner", "duplicates", "md5", "excel", "multithreading"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: System :: Filesystems",
+    "Topic :: Utilities",
+]
+dependencies = [
+    "pandas>=2.0.0",
+    "openpyxl>=3.1.0",
+    "XlsxWriter>=3.1.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-cov>=4.1.0",
+    "ruff>=0.4.0",
+    "mypy>=1.10.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/ERSharafutdinov/file-scan-tree"
+Repository = "https://github.com/ERSharafutdinov/file-scan-tree"
+Issues = "https://github.com/ERSharafutdinov/file-scan-tree/issues"
+
+[project.scripts]
+file-scan-tree = "scanner:main"
+
+[tool.setuptools]
+py-modules = ["scanner"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py38"
+
+[tool.pytest.ini_options]
+testpaths = ["."]
+addopts = "-v --cov=scanner --cov-report=term-missing"
